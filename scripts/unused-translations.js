@@ -89,6 +89,24 @@ var grep = function (pattern, cb) {
 };
 
 var keys = Object.keys(Messages).sort();
+
+var addNestedKeys = function (o, path) {
+    if (!o || typeof(o) !== 'object') { return; }
+    Object.keys(o).forEach(function (k) {
+        if (typeof(o[k]) !== 'string') { return void addNestedKeys(o[k], path.concat(k)); }
+        if (keys.indexOf(k) !== -1) {
+            return void console.error("NESTED_KEY_COLLISION", path.concat(k));
+        }
+        keys.push(k);
+    });
+};
+
+keys.forEach(function (key) {
+    var val = Messages[key];
+    addNestedKeys(val, [key]);
+});
+
+
 var total = keys.length;
 
 var limit = total;

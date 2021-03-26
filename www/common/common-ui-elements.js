@@ -537,6 +537,7 @@ define([
                     button.click(callback);
                 }
                 break;
+
             case 'import':
                 button = $('<button>', {
                     'class': 'fa fa-upload cp-toolbar-icon-import',
@@ -1618,7 +1619,7 @@ define([
                 content: $userAdminContent.html()
             });
         }
-
+        /*
         if (accountName && !AppConfig.disableProfile) {
             options.push({
                 tag: 'a',
@@ -1633,6 +1634,7 @@ define([
                 },
             });
         }
+
         if (padType !== 'drive' || (!accountName && priv.newSharedFolder)) {
             options.push({
                 tag: 'a',
@@ -1669,6 +1671,7 @@ define([
                 },
             });
         }
+        */
         if (padType !== 'settings') {
             options.push({
                 tag: 'a',
